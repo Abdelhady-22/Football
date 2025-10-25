@@ -1,11 +1,12 @@
-# 🫁 AI-Powered Chest X-Ray Classification
+# ⚽ Unlocking the Game: Predictive Power and Player Potential with Machine Learning
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
-[![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange.svg)](https://www.tensorflow.org/)
+[![Scikit-learn](https://img.shields.io/badge/Scikit--learn-1.0+-orange.svg)](https://scikit-learn.org/)
+[![Pandas](https://img.shields.io/badge/Pandas-1.3+-green.svg)](https://pandas.pydata.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Kaggle](https://img.shields.io/badge/Kaggle-Notebook-20BEFF.svg)](https://www.kaggle.com/)
 
-> Leveraging Convolutional Neural Networks (CNNs) to classify chest X-ray images into four categories: **COVID-19**, **Normal**, **Pneumonia**, and **Tuberculosis**. This project achieves **95.14% accuracy**, supporting early diagnosis and clinical decision-making in respiratory disease detection.
+> An In-Depth Machine Learning Journey Through 17,000+ Footballers — Exploring Performance, Value, and Future Stars Using SoFIFA's Comprehensive Dataset. This project achieves **97.37% accuracy** in player position classification and **95.87% R² score** in market value prediction.
 
 ---
 
@@ -28,139 +29,191 @@
 
 ## ✨ Features
 
-- **Custom CNN Architecture**: Deep learning model specifically designed for chest X-ray classification
+- **Multi-Model Machine Learning Pipeline**: Implements and compares multiple algorithms
+  - **Regression Models**: Linear Regression for value and rating prediction
+  - **Classification Models**: 
+    - Logistic Regression (92.15% accuracy)
+    - Random Forest Classifier (97.37% accuracy)
+    - Support Vector Machine (92.26% accuracy)
 
-- **High Accuracy**: Achieves **95.14% accuracy** on test data with robust performance metrics
+- **Comprehensive Data Analysis**: 
+  - Exploratory Data Analysis (EDA) with 20+ visualizations
+  - Player market value prediction (R² = 0.9587)
+  - Overall rating prediction (R² = 0.9171)
+  - Position classification (97.37% accuracy)
 
-- **Comprehensive Evaluation**: 
-  - Accuracy, Precision, Recall, F1-Score metrics
-  - Training/validation loss and accuracy curves
-  - Model performance tracking across epochs
+- **Advanced Feature Engineering**: 
+  - Date parsing and temporal features
+  - Position hierarchy extraction
+  - Name tokenization
+  - Categorical encoding
 
-- **Multi-Class Classification**: 
-  - COVID-19 detection
-  - Pneumonia identification
-  - Tuberculosis recognition
-  - Normal chest X-ray classification
+- **Rich Visualizations**: 
+  - Player distribution by nationality, age, and position
+  - Skill correlation heatmaps
+  - Market value analysis
+  - Rating distribution and player comparisons
 
-- **Data Preprocessing**: Robust pipeline with normalization and proper train/validation/test splitting
-
-- **Visualization Tools**: 
-  - Sample image visualization from training/validation/testing sets
-  - Training history plots
-  - Model performance comparison charts
+- **Data Preprocessing**: 
+  - Missing value imputation
+  - Label encoding for categorical features
+  - Feature scaling with StandardScaler
+  - Train/test split with stratification
 
 ---
 
 ## 🎯 Model Performance
 
-| Model | Test Accuracy | Precision | Recall | F1-Score | Loss |
-|-------|--------------|-----------|---------|----------|------|
-| **Custom CNN** | **95.14%** | **95.36%** | **94.81%** | **95.11%** | **0.1632** |
+### Regression Models
 
-### Training Performance
-- **Best Validation Accuracy**: 95.62% (Epoch 10)
-- **Best Validation Loss**: 0.1635 (Epoch 6)
-- **Total Training Time**: ~11 epochs with early stopping
-- **Final Training Accuracy**: 99.35%
+#### Market Value Prediction (value_euro)
+| Metric | Value |
+|--------|-------|
+| **R² Score** | **95.87%** |
+| **Mean Squared Error** | 1,370,878,656,677.66 |
+| **Model Type** | Linear Regression |
 
-**Best Model**: Custom CNN with **95.14% test accuracy** 🏆
+#### Overall Rating Prediction (overall_rating)
+| Metric | Value |
+|--------|-------|
+| **R² Score** | **91.71%** |
+| **Mean Squared Error** | 3.95 |
+| **Model Type** | Linear Regression |
+
+### Classification Models (Position Prediction)
+
+| Model | Accuracy | Precision | Recall | F1-Score |
+|-------|----------|-----------|--------|----------|
+| **Random Forest** | **97.37%** | **98%** | **97%** | **98%** |
+| **SVM** | 92.26% | 94% | 93% | 93% |
+| **Logistic Regression** | 92.15% | 94% | 93% | 93% |
+
+**Best Model**: Random Forest Classifier with **97.37% accuracy** 🏆
+
+### Position-wise Classification Performance (Random Forest)
+
+| Position | Precision | Recall | F1-Score | Support |
+|----------|-----------|--------|----------|---------|
+| Defender | 96% | 98% | 97% | 1,333 |
+| Midfielder | 97% | 99% | 98% | 1,149 |
+| Goalkeeper | 100% | 100% | 100% | 370 |
+| Striker | 100% | 93% | 96% | 688 |
 
 ---
 
 ## 📊 Dataset
 
 ### Source
-The project uses the CXR Dataset from Kaggle:
+The project uses the FIFA Players Dataset from Kaggle:
 
-- **CXR Data Set** by Reflex7
-  - [Dataset Link](https://www.kaggle.com/datasets/reflex7/cxr-data-set)
+- **Football Players Data** by Maso0dahmed
+  - [Dataset Link](https://www.kaggle.com/datasets/maso0dahmed/football-players-data)
 
-### Dataset Structure
+### Dataset Overview
 ```
-/kaggle/input/cxr-data-set/
-├── Covid/
-├── Normal/
-├── Pneumonia/
-└── Tuberculosis/
-
-/kaggle/working/split_data/
-├── train/
-│   ├── Covid/
-│   ├── Normal/
-│   ├── Pneumonia/
-│   └── Tuberculosis/
-├── validation/
-│   ├── Covid/
-│   ├── Normal/
-│   ├── Pneumonia/
-│   └── Tuberculosis/
-└── test/
-    ├── Covid/
-    ├── Normal/
-    ├── Pneumonia/
-    └── Tuberculosis/
+FIFA Players Dataset
+├── Total Players: 17,954
+├── Total Features: 51 columns
+└── Data Source: SoFIFA
 ```
 
-### Classes
-- **COVID-19**: Chest X-rays showing COVID-19 infection patterns
-- **Normal**: Healthy chest X-ray scans without abnormalities
-- **Pneumonia**: X-rays displaying pneumonia-related lung infections
-- **Tuberculosis**: Chest radiographs showing tuberculosis manifestations
+### Key Features
 
-### Dataset Split
-- **Training Set**: 57,832 images (80%)
-- **Validation Set**: 7,232 images (10%)
-- **Test Set**: 7,232 images (10%)
+#### Player Information
+- **Personal**: Name, Full Name, Birth Date, Age, Nationality
+- **Physical**: Height (cm), Weight (kg), Body Type, Preferred Foot
+- **Professional**: Positions, Club, Overall Rating, Potential
+
+#### Financial Data
+- **Value Euro**: Player market value (10K - 110.5M)
+- **Wage Euro**: Weekly wages
+- **Release Clause Euro**: Contract release amount
+
+#### Performance Attributes (30+ Skills)
+- **Attacking**: Finishing, Volleys, Heading Accuracy, Shot Power, Long Shots
+- **Technical**: Dribbling, Ball Control, Crossing, Curve, Freekick Accuracy
+- **Physical**: Acceleration, Sprint Speed, Stamina, Strength, Jumping, Agility
+- **Mental**: Vision, Composure, Reactions, Positioning
+- **Defensive**: Marking, Interceptions, Standing Tackle, Sliding Tackle
+
+### Data Preprocessing Steps
+
+1. **Missing Value Handling**:
+   - Numerical columns: Median imputation
+   - Categorical columns: "nothing" placeholder
+   - Dropped columns with >50% missing values (national_team features)
+
+2. **Feature Engineering**:
+   - Extracted year, month, day from birth_date
+   - Split positions into main and sub-positions
+   - Tokenized full names into first, second, last names
+   - Created position hierarchy: GK → Goalkeeper, RB/LB/CB → Defender, etc.
+
+3. **Encoding**:
+   - Label Encoding for 160+ nationalities
+   - Position encoding (4 main categories)
+   - Body type and preferred foot encoding
+
+4. **Feature Scaling**:
+   - StandardScaler for numerical features
+   - Applied to all ML models
 
 ### Class Distribution
-| Class | Label | Total Images |
-|-------|-------|--------------|
-| COVID-19 | 0 | 18,074 |
-| Normal | 1 | 18,074 |
-| Pneumonia | 2 | 18,074 |
-| Tuberculosis | 3 | 18,074 |
 
-### Preprocessing
-- Images resized to **224x224** pixels
-- Normalization: pixel values scaled to [0, 1]
-- Stratified train/validation/test split (80/10/10)
-- Batch size: **32**
+| Position Category | Count | Percentage |
+|-------------------|-------|------------|
+| Defender | 6,665 | 37.1% |
+| Midfielder | 5,745 | 32.0% |
+| Striker | 3,440 | 19.2% |
+| Goalkeeper | 1,850 | 10.3% |
 
 ---
 
 ## 📁 Project Structure
 
 ```
-CXR_IMAGE_CLASSIFICATION/
+FOOTBALL/
 │
 ├── result/
-│   └── CNN_Result/
-│       ├── CNN.png                    # Model architecture visualization
-│       ├── model_accuracy.png         # Training/validation accuracy plot
-│       ├── result.png                 # Final results comparison
-│       ├── val_accuracy.png           # Validation accuracy over epochs
-│       └── val_loss.png              # Validation loss over epochs
+│   └── exploratory data analysis/
+│       ├── Age_Distribution.png
+│       ├── aggression_penalties.png
+│       ├── correlation_of_attributes.png
+│       ├── finishing_and_composure.png
+│       ├── freekick_accuracy_and_curve.png
+│       ├── H,W_high-rated_Players.png
+│       ├── nationality_distribution.png
+│       ├── Numerical_col_distribution_violin.png
+│       ├── Numerical_col_distribution.png
+│       ├── overall_rating_potential.png
+│       ├── overall_rating.png
+│       ├── players_count_position.png
+│       ├── Players_Rating.png
+│       ├── rating_distribution.png
+│       ├── Skills_Correlation.png
+│       ├── top_frequent_country.png
+│       ├── value_by_rating.png
+│       ├── vision_and_positioning.png
+│       └── weight_and_agility.png
 │
-├── Data_Visualization/
-│   ├── testing.png                    # Sample test images
-│   ├── train.png                      # Sample training images
-│   └── validation.png                 # Sample validation images
+├── result/
+│   ├── overall_rating_regression.txt
+│   ├── positions_classification_model_1.txt    # Logistic Regression
+│   ├── positions_classification_model_2.txt    # Random Forest
+│   ├── positions_classification_model_3.txt    # SVM
+│   └── value_euro_regression.txt
 │
 ├── src/
-│   └── model/
-│       └── model.txt.txt              # Model architecture details
+│   └── football.ipynb                          # Main analysis notebook
 │
-├── cxr-image-classification-cnn-95-acc.ipynb   # Main training notebook
-├── models.txt                         # Links to trained models
-├── dataset.txt                        # Dataset download information
-├── kaggle_notebook.txt                # Link to Kaggle notebook
-├── requirements.txt                   # Python dependencies
-├── .env                               # Environment variables
-├── .env.example                       # Environment variables template
-├── .gitignore                         # Git ignore rules
-├── LICENSE                            # Project license
-└── README.md                          # This file
+├── dataset.txt                                 # Dataset download link
+├── kaggle_notebook.txt                         # Link to Kaggle notebook
+├── requirements.txt                            # Python dependencies
+├── .env                                        # Environment variables
+├── .env.example                                # Environment variables template
+├── .gitignore                                  # Git ignore rules
+├── LICENSE                                     # Project license
+└── README.md                                   # This file
 ```
 
 ---
@@ -169,9 +222,8 @@ CXR_IMAGE_CLASSIFICATION/
 
 ### Prerequisites
 - Python 3.8 or higher
-- CUDA-compatible GPU (recommended for faster training)
-- 16GB+ RAM (recommended)
-- 10GB+ free disk space
+- 8GB+ RAM (recommended)
+- 5GB+ free disk space
 
 ### Installation Steps
 
@@ -181,19 +233,19 @@ Download and install MiniConda from [here](https://docs.anaconda.com/free/minico
 
 Create a new environment:
 ```bash
-conda create -n CXR_Classification python=3.8
+conda create -n Football_Analysis python=3.8
 ```
 
 Activate the environment:
 ```bash
-conda activate CXR_Classification
+conda activate Football_Analysis
 ```
 
 #### 2. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/cxr-image-classification.git
-cd cxr-image-classification
+git clone https://github.com/yourusername/football-players-analysis.git
+cd football-players-analysis
 ```
 
 #### 3. Install Dependencies
@@ -207,12 +259,12 @@ pip install -r requirements.txt
 **Option A: Using Kaggle API**
 ```bash
 pip install kagglehub
-python -c "import kagglehub; kagglehub.dataset_download('reflex7/cxr-data-set')"
+python -c "import kagglehub; kagglehub.dataset_download('maso0dahmed/football-players-data')"
 ```
 
 **Option B: Manual Download**
 - Download dataset from the link in `dataset.txt`
-- Extract to `/kaggle/input/cxr-data-set/` directory
+- Place `fifa_players.csv` in the `/kaggle/input/football-players-data/` directory
 
 #### 5. Setup Environment Variables
 
@@ -223,172 +275,287 @@ cp .env.example .env
 Edit `.env` file:
 ```env
 PROJECT_VERSION=1.0
-IMAGE_SIZE=224
-BATCH_SIZE=32
-EPOCHS=20
-LEARNING_RATE=0.001
+TEST_SIZE=0.2
+RANDOM_STATE=42
 ```
 
 ---
 
 ## 💻 Usage
 
-### Training the Model
+### Running the Analysis
 
-Run the main training notebook:
+Open and run the Jupyter notebook:
 ```bash
-jupyter notebook cxr-image-classification-cnn-95-acc.ipynb
+jupyter notebook src/football.ipynb
 ```
 
 Or run as a Python script:
 ```bash
-python cxr-image-classification-cnn-95-acc.py
+python src/football.py
 ```
 
-### Model Inference
+### Predicting Player Market Value
 
 ```python
-from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing import image
+import pandas as pd
 import numpy as np
+from sklearn.preprocessing import StandardScaler, LabelEncoder
+from sklearn.linear_model import LinearRegression
+import pickle
 
 # Load trained model
-model = load_model('CNN_best_model.keras')
+model = pickle.load(open('value_euro_model.pkl', 'rb'))
+scaler = pickle.load(open('scaler.pkl', 'rb'))
 
-# Load and preprocess image
-img_path = 'path/to/chest_xray.jpg'
-img = image.load_img(img_path, target_size=(224, 224))
-img_array = image.img_to_array(img) / 255.0
-img_array = np.expand_dims(img_array, axis=0)
+# Prepare new player data
+player_data = {
+    'age': 25,
+    'height_cm': 180,
+    'weight_kgs': 75,
+    'overall_rating': 85,
+    'potential': 88,
+    'preferred_foot': 1,  # Encoded: 0=Left, 1=Right
+    'positions': 1,  # Encoded: 0=Defender, 1=Midfielder, 2=GK, 3=Striker
+    # ... add all required features
+}
 
-# Make prediction
-prediction = model.predict(img_array)
-classes = ['COVID-19', 'Normal', 'Pneumonia', 'Tuberculosis']
-result = classes[np.argmax(prediction)]
-confidence = np.max(prediction) * 100
+# Convert to DataFrame
+X_new = pd.DataFrame([player_data])
 
-print(f"Prediction: {result}")
-print(f"Confidence: {confidence:.2f}%")
+# Scale features
+X_new_scaled = scaler.transform(X_new)
+
+# Predict value
+predicted_value = model.predict(X_new_scaled)
+print(f"Predicted Market Value: €{predicted_value[0]:,.2f}")
 ```
 
-### Evaluating the Model
+### Predicting Player Position
 
 ```python
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from sklearn.ensemble import RandomForestClassifier
 
-# Preprocess function
-def cnn_preprocess(x):
-    return x/255.0
+# Load trained model
+rf_model = pickle.load(open('position_classifier_rf.pkl', 'rb'))
 
-# Create test generator
-test_datagen = ImageDataGenerator(preprocessing_function=cnn_preprocess)
-test_generator = test_datagen.flow_from_directory(
-    '/kaggle/working/split_data/test',
-    target_size=(224, 224),
-    batch_size=32,
-    class_mode='categorical'
-)
+# Prepare player attributes
+player_features = {
+    'pace': 85,
+    'shooting': 75,
+    'passing': 80,
+    'dribbling': 82,
+    'defending': 45,
+    'physical': 70,
+    # ... add all required features
+}
 
-# Evaluate model
-results = model.evaluate(test_generator)
-print(f"Test Loss: {results[0]:.4f}")
-print(f"Test Accuracy: {results[1]*100:.2f}%")
-print(f"Test Precision: {results[2]*100:.2f}%")
-print(f"Test Recall: {results[3]*100:.2f}%")
-print(f"Test F1-Score: {results[4]*100:.2f}%")
+# Convert to DataFrame and scale
+X_player = pd.DataFrame([player_features])
+X_player_scaled = scaler.transform(X_player)
+
+# Predict position
+position = rf_model.predict(X_player_scaled)
+positions_map = {0: 'Defender', 1: 'Midfielder', 2: 'Goalkeeper', 3: 'Striker'}
+print(f"Predicted Position: {positions_map[position[0]]}")
+
+# Get probability distribution
+probabilities = rf_model.predict_proba(X_player_scaled)[0]
+for i, prob in enumerate(probabilities):
+    print(f"{positions_map[i]}: {prob*100:.2f}%")
+```
+
+### Exploratory Data Analysis
+
+```python
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Load data
+data = pd.read_csv('fifa_players.csv')
+
+# Top 10 most valuable players
+top_players = data.nlargest(10, 'value_euro')[['full_name', 'value_euro', 'overall_rating']]
+print(top_players)
+
+# Average rating by nationality (top 10 countries)
+avg_rating_by_country = data.groupby('nationality')['overall_rating'].mean().nlargest(10)
+plt.figure(figsize=(12, 6))
+avg_rating_by_country.plot(kind='bar')
+plt.title('Top 10 Countries by Average Player Rating')
+plt.show()
+
+# Skill correlation heatmap
+skill_columns = ['crossing', 'finishing', 'dribbling', 'ball_control', 'acceleration', 'stamina']
+plt.figure(figsize=(10, 8))
+sns.heatmap(data[skill_columns].corr(), annot=True, cmap='coolwarm')
+plt.title('Skill Attributes Correlation')
+plt.show()
 ```
 
 ---
 
 ## 🔧 Technical Details
 
-### Architecture Overview
+### Machine Learning Pipeline
 
-#### Custom CNN
-```
-Input (224x224x3)
-→ Conv2D(64, 3×3, ReLU) + MaxPooling2D(2×2)
-→ Conv2D(64, 3×3, ReLU) + MaxPooling2D(2×2)
-→ Conv2D(128, 3×3, ReLU) + MaxPooling2D(2×2)
-→ Flatten
-→ Dropout(0.4)
-→ Dense(128, ReLU)
-→ Dense(64, ReLU)
-→ Dense(64, ReLU)
-→ Dense(4, Softmax)
+#### 1. Data Preprocessing
+```python
+# Missing value imputation
+data['release_clause_euro'].fillna(data['release_clause_euro'].median(), inplace=True)
+
+# Drop high-null columns
+data.drop(['national_team', 'national_rating', 'national_team_position', 
+           'national_jersey_number'], axis=1, inplace=True)
+
+# Remove remaining nulls
+data.dropna(inplace=True)
 ```
 
-**Total Parameters**: ~3.5M parameters
+#### 2. Feature Engineering
+```python
+# Date features
+data['year'] = data['birth_date'].dt.year
+data['month'] = data['birth_date'].dt.month
+data['day'] = data['birth_date'].dt.day
+
+# Position hierarchy
+data['main_positions'] = data['positions'].str.split(',').str[0]
+data['sub_positions'] = data['positions'].str.split(',').str[1]
+
+# Position mapping
+mapping = {
+    'GK': 'goalkeeper',
+    'RB': 'defender', 'LB': 'defender', 'CB': 'defender',
+    'CAM': 'Midfielder', 'CM': 'Midfielder', 'CDM': 'Midfielder',
+    'CF': 'striker', 'LW': 'striker', 'RW': 'striker', 'ST': 'striker'
+}
+data['positions'] = data['main_positions'].map(mapping)
+```
+
+#### 3. Encoding and Scaling
+```python
+from sklearn.preprocessing import LabelEncoder, StandardScaler
+
+# Label encoding
+le = LabelEncoder()
+categorical_columns = ['nationality', 'positions', 'body_type', 'preferred_foot']
+for col in categorical_columns:
+    data[col] = le.fit_transform(data[col])
+
+# Feature scaling
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+```
+
+### Model Architectures
+
+#### Linear Regression (Value Prediction)
+```python
+from sklearn.linear_model import LinearRegression
+
+model = LinearRegression()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+
+# Metrics
+print(f"R² Score: {r2_score(y_test, y_pred):.4f}")
+print(f"MSE: {mean_squared_error(y_test, y_pred):,.2f}")
+```
+
+#### Random Forest Classifier (Position Classification)
+```python
+from sklearn.ensemble import RandomForestClassifier
+
+rf_model = RandomForestClassifier(random_state=42)
+rf_model.fit(X_train_scaled, y_train)
+y_pred = rf_model.predict(X_test_scaled)
+
+# Metrics
+print(f"Accuracy: {accuracy_score(y_test, y_pred):.4f}")
+```
 
 ### Training Configuration
 
 | Parameter | Value |
 |-----------|-------|
-| Image Size | 224 × 224 |
-| Batch Size | 32 |
-| Epochs | 20 (with early stopping) |
-| Optimizer | Adam |
-| Initial Learning Rate | 0.001 |
-| Loss Function | Categorical Crossentropy |
-| Metrics | Accuracy, Precision, Recall, F1-Score |
+| Test Size | 20% |
+| Random State | 42 |
+| Scaling Method | StandardScaler |
+| Cross Validation | None (single split) |
+| Feature Selection | Manual (dropped names) |
 
-### Callbacks
-- **EarlyStopping**: 
-  - Monitor: `val_loss`
-  - Patience: 5 epochs
-  - Restore best weights: True
+### Model Comparison
 
-- **ModelCheckpoint**: 
-  - Filepath: `CNN_best_model.keras`
-  - Monitor: `val_loss`
-  - Save best only: True
-
-- **ReduceLROnPlateau**: 
-  - Monitor: `val_loss`
-  - Factor: 0.5
-  - Patience: 3 epochs
-  - Min LR: 1e-7
-
-### Hardware Requirements
-- **GPU**: NVIDIA Tesla P100-PCIE-16GB (used in training)
-- **CUDA**: Compute Capability 6.0
-- **cuDNN**: Version 9.3.0
-- **RAM**: 16GB recommended
-- **Storage**: 10GB for datasets and models
-- **Framework**: TensorFlow with XLA optimization
+| Task | Best Model | Metric | Score |
+|------|------------|--------|-------|
+| Value Prediction | Linear Regression | R² | 95.87% |
+| Rating Prediction | Linear Regression | R² | 91.71% |
+| Position Classification | Random Forest | Accuracy | 97.37% |
 
 ---
 
 ## 📈 Results
 
-### Training History
+### Exploratory Data Analysis Insights
 
-The model was trained for 11 epochs before early stopping:
+1. **Nationality Distribution**:
+   - England has the most players (1,662)
+   - Top 10 countries represent 45% of all players
+   - 160 different nationalities in dataset
 
-| Epoch | Train Acc | Val Acc | Train Loss | Val Loss | Learning Rate |
-|-------|-----------|---------|------------|----------|---------------|
-| 1 | 77.76% | 89.85% | 0.5720 | 0.3056 | 0.001 |
-| 2 | 91.43% | 93.57% | 0.2480 | 0.1961 | 0.001 |
-| 5 | 96.64% | 94.80% | 0.0942 | 0.1931 | 0.001 |
-| 6 | 97.39% | 94.99% | 0.0771 | **0.1635** | 0.001 |
-| 10 | 99.09% | **95.62%** | 0.0261 | 0.2244 | 0.0005 |
-| 11 | 99.35% | 95.34% | 0.0186 | 0.2381 | 0.0005 |
+2. **Market Value Distribution**:
+   - Range: €10,000 - €110,500,000
+   - Median value: €750,000
+   - Most players (35%) valued between €100K - €1M
 
-### Key Findings
+3. **Age Distribution**:
+   - Average age: 25.1 years
+   - Peak player count: 21-23 years
+   - Range: 16-47 years
 
-1. **Fast Convergence**: Model achieved >90% accuracy within 2 epochs
-2. **Excellent Generalization**: Test accuracy (95.14%) close to validation accuracy (95.62%)
-3. **Balanced Performance**: High precision (95.36%) and recall (94.81%) indicate balanced predictions
-4. **Low Overfitting**: Validation loss remained stable with proper regularization
-5. **Robust F1-Score**: 95.11% F1-score demonstrates strong overall performance
+4. **Position Distribution**:
+   - Defenders: 37.1%
+   - Midfielders: 32.0%
+   - Strikers: 19.2%
+   - Goalkeepers: 10.3%
 
-### Training Curves
+5. **Overall Rating**:
+   - Average: 66.2
+   - High-rated players (85+): 4.2%
+   - Strong correlation with market value (r=0.82)
 
-The training shows:
-- Smooth accuracy improvement across epochs
-- Controlled validation loss with minimal overfitting
-- Effective learning rate reduction strategy
-- Proper convergence without premature stopping
+### Key Correlations
+
+**With Market Value**:
+- Overall Rating: 0.82
+- Potential: 0.75
+- Reactions: 0.68
+- Composure: 0.65
+
+**Skill Correlations**:
+- Ball Control ↔ Dribbling: 0.91
+- Short Passing ↔ Vision: 0.87
+- Standing Tackle ↔ Marking: 0.89
+
+### Model Insights
+
+1. **Value Prediction (R² = 0.9587)**:
+   - Most important features: Overall rating, potential, reputation
+   - Model explains 95.87% of variance in player values
+   - Performs well across all value ranges
+
+2. **Rating Prediction (R² = 0.9171)**:
+   - Technical skills (ball control, dribbling) most predictive
+   - Age has moderate negative correlation with peak performance
+   - Position-specific attributes show varied importance
+
+3. **Position Classification (97.37% accuracy)**:
+   - Goalkeepers classified with 100% accuracy (distinct attributes)
+   - Defenders vs. Midfielders: Most challenging distinction
+   - Physical attributes key for position determination
 
 ---
 
@@ -398,63 +565,71 @@ Create a `.env` file with the following variables:
 
 ```env
 # Project Configuration
-PROJECT_NAME=CXR_Image_Classification
+PROJECT_NAME=Football_Players_Analysis
 PROJECT_VERSION=1.0
 
+# Data Paths
+DATA_PATH=/kaggle/input/football-players-data/fifa_players.csv
+OUTPUT_PATH=/kaggle/working/
+
 # Model Parameters
-IMAGE_SIZE=224
-BATCH_SIZE=32
-EPOCHS=20
-LEARNING_RATE=0.001
+TEST_SIZE=0.2
+RANDOM_STATE=42
+CV_FOLDS=5
 
-# Paths
-BASE_DIR=/kaggle/input/cxr-data-set
-OUTPUT_DIR=/kaggle/working/split_data
-TRAIN_PATH=/kaggle/working/split_data/train
-VALID_PATH=/kaggle/working/split_data/validation
-TEST_PATH=/kaggle/working/split_data/test
-MODEL_SAVE_PATH=/kaggle/working/
+# Feature Engineering
+MIN_POSITION_FREQUENCY=100
+VALUE_BINS=10
 
-# Data Split Ratios
-TEST_SIZE=0.1
-VAL_SIZE=0.1
-TRAIN_SIZE=0.8
+# Model Configuration
+# Regression
+LINEAR_REG_FIT_INTERCEPT=True
 
-# Training Configuration
-EARLY_STOPPING_PATIENCE=5
-REDUCE_LR_PATIENCE=3
-REDUCE_LR_FACTOR=0.5
-MIN_LEARNING_RATE=1e-7
+# Classification
+RF_N_ESTIMATORS=100
+RF_MAX_DEPTH=None
+RF_MIN_SAMPLES_SPLIT=2
+RF_MIN_SAMPLES_LEAF=1
 
-# Callbacks
-MONITOR_METRIC=val_loss
-SAVE_BEST_ONLY=True
-RESTORE_BEST_WEIGHTS=True
+LR_MAX_ITER=1000
+LR_SOLVER=lbfgs
+
+SVM_KERNEL=rbf
+SVM_C=1.0
+SVM_GAMMA=scale
+
+# Visualization
+FIGURE_SIZE_SMALL=(10, 6)
+FIGURE_SIZE_MEDIUM=(12, 8)
+FIGURE_SIZE_LARGE=(15, 10)
 ```
 
 ---
 
 ## 📚 Resources
 
-### Trained Models
-Trained model (.keras format) available:
-- **CNN_best_model.keras** - Best performing model from training
-
-See `models.txt` for download links.
+### Model Results Files
+All model results and predictions available in `/result/`:
+- `value_euro_regression.txt` - Market value prediction results
+- `overall_rating_regression.txt` - Player rating prediction results
+- `positions_classification_model_1.txt` - Logistic Regression results
+- `positions_classification_model_2.txt` - Random Forest results
+- `positions_classification_model_3.txt` - SVM results
 
 ### Kaggle Notebook
 Complete interactive notebook with all visualizations:
-- See `kaggle_notebook.txt` for the link to the Kaggle notebook
+- See `kaggle_notebook.txt` for the link
 
 ### Dataset
 Download link available in `dataset.txt`:
-- CXR Data Set (Reflex7)
+- Football Players Data (Maso0dahmed)
 
 ### Documentation
-- [TensorFlow Documentation](https://www.tensorflow.org/api_docs)
-- [Keras API Reference](https://keras.io/api/)
-- [COVID-19 Chest X-ray Database](https://github.com/ieee8023/covid-chestxray-dataset)
-- [WHO Tuberculosis Resources](https://www.who.int/health-topics/tuberculosis)
+- [Scikit-learn Documentation](https://scikit-learn.org/stable/documentation.html)
+- [Pandas User Guide](https://pandas.pydata.org/docs/user_guide/index.html)
+- [Seaborn Tutorial](https://seaborn.pydata.org/tutorial.html)
+- [FIFA Ratings Explained](https://www.ea.com/games/fifa/fifa-22/ratings)
+- [SoFIFA Database](https://sofifa.com/)
 
 ---
 
@@ -473,7 +648,8 @@ Contributions are welcome! Please follow these steps:
 - Add docstrings to functions and classes
 - Update README.md for significant changes
 - Test code before submitting PR
-- Ensure all tests pass
+- Include visualizations for new analyses
+- Document new features and model improvements
 
 ---
 
@@ -485,17 +661,19 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👥 Authors
 
-- **Abdelhady Ali** - *Initial work* - [YourGitHub](https://github.com/Abdelhady-22)
+- **Abdelhady Ali** - *Initial work* - [MyGitHub](https://github.com/Abdelhady-22)
 
 ---
 
 ## 🙏 Acknowledgments
 
-- **Dataset**: Thanks to Reflex7 for providing the comprehensive CXR dataset on Kaggle
-- **Kaggle**: For providing the platform and computational resources (Tesla P100 GPU)
-- **TensorFlow/Keras**: For the powerful deep learning framework
-- **Medical Community**: For inspiring this work to assist in respiratory disease diagnosis
-- **Open Source Community**: For various tools and libraries used in this project
+- **Dataset**: Thanks to Maso0dahmed for providing the comprehensive FIFA Players dataset
+- **SoFIFA**: For maintaining the most detailed football player database
+- **Kaggle**: For providing the platform and community support
+- **Scikit-learn**: For powerful machine learning algorithms
+- **EA Sports FIFA**: For inspiring this analysis
+- **Football Analytics Community**: For insights and methodologies
+- **Open Source Community**: For various tools and libraries
 
 ---
 
@@ -503,35 +681,39 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 For questions, suggestions, or collaborations:
 
-- **Email**: (abdelhady2322005@gmail.com)
-- **LinkedIn**: (https://www.linkedin.com/in/abdelhady-ali-940761316)
-- **GitHub**: (https://github.com/Abdelhady-22)
-- **Kaggle**: (https://www.kaggle.com/abdulhadialimohamed)
-
+- **Email**: abdelhady2322005@gmail.com
+- **LinkedIn**: [My LinkedIn](https://www.linkedin.com/in/abdelhady-ali-940761316)
+- **GitHub**: [My GitHub](https://github.com/Abdelhady-22)
+- **Kaggle**: [My Kaggle Profile](https://www.kaggle.com/abdulhadialimohamed)
 ---
 
 ## ⚠️ Disclaimer
 
-This project is for **educational and research purposes only**. The model should not be used as a substitute for professional medical diagnosis. Chest X-ray interpretation requires expertise from qualified radiologists and healthcare professionals. Always consult medical experts for accurate diagnosis and treatment decisions.
+This project is for **educational and research purposes only**. The models and predictions should not be used as the sole basis for:
+- Player recruitment decisions
+- Transfer negotiations
+- Contract valuations
+- Professional scouting evaluations
 
 **Important Notes:**
-- This tool is not FDA approved
-- Not intended for clinical use without proper validation
-- Should not replace professional medical judgment
-- Results may vary depending on image quality and patient conditions
+- Model predictions are based on FIFA game ratings, not real-world performance
+- Market values are estimates and may not reflect actual transfer fees
+- Player potential is speculative and based on game mechanics
+- Real football performance involves factors beyond statistical analysis
+- Always consult professional scouts and analysts for real-world decisions
 
 ---
 
-
+## 📊 Citations
 
 ### Dataset Citation
 ```bibtex
-@dataset{reflex7_cxr_2024,
-  title={CXR Data Set},
-  author={Reflex7},
+@dataset{maso0dahmed_fifa_2024,
+  title={Football Players Data},
+  author={Maso0dahmed},
   year={2024},
   publisher={Kaggle},
-  url={https://www.kaggle.com/datasets/reflex7/cxr-data-set}
+  url={https://www.kaggle.com/datasets/maso0dahmed/football-players-data}
 }
 ```
 
@@ -539,27 +721,44 @@ This project is for **educational and research purposes only**. The model should
 
 ## 🔮 Future Improvements
 
-- [ ] Implement data augmentation for improved generalization
-- [ ] Experiment with transfer learning (ResNet, EfficientNet, DenseNet)
-- [ ] Add Grad-CAM visualization for model interpretability
-- [ ] Multi-model ensemble for improved accuracy
-- [ ] Deploy as web application using Streamlit or Flask
-- [ ] Add API endpoints for production integration
-- [ ] Expand dataset with more diverse X-ray images
-- [ ] Implement severity classification for detected diseases
-- [ ] Add patient demographic integration
-- [ ] Create mobile application for point-of-care diagnosis
+- [ ] Implement time-series analysis for player value trends
+- [ ] Add transfer prediction model
+- [ ] Create player comparison tool
+- [ ] Build injury risk prediction model
+- [ ] Implement deep learning for attribute prediction
+- [ ] Add web scraping for real-time updates
+- [ ] Create interactive dashboard with Plotly/Dash
+- [ ] Develop player recommendation system
+- [ ] Add team composition optimization
+- [ ] Implement career trajectory prediction
+- [ ] Create mobile app for player scouting
+- [ ] Add multi-language support
+- [ ] Integrate with football APIs
+- [ ] Build player performance tracking system
+
+---
+
+## 📖 Research Applications
+
+This project can be used for:
+- **Sports Analytics**: Understanding player valuation factors
+- **Machine Learning Education**: End-to-end ML pipeline example
+- **Data Science Portfolio**: Demonstrating EDA and modeling skills
+- **Transfer Market Analysis**: Market value prediction research
+- **Player Development**: Identifying potential growth patterns
+- **Scouting Automation**: Assisting in player discovery
+- **Academic Research**: Football analytics studies
 
 ---
 
 <div align="center">
 
-**Made with ❤️ for advancing medical AI and improving healthcare accessibility**
+**Made with ⚽ for advancing football analytics and data science in sports**
 
 ⭐ Star this repo if you find it helpful!
 
-[![GitHub stars](https://img.shields.io/github/stars/Abdelhady-22/cxr-image-classification?style=social)](https://github.com/Abdelhady-22/CXR_image_classification)
-[![GitHub forks](https://img.shields.io/github/forks/Abdelhady-22/cxr-image-classification?style=social)](https://github.com/Abdelhady-22/CXR_image_classification)
-[![GitHub watchers](https://img.shields.io/github/watchers/Abdelhady-22/cxr-image-classification?style=social)](https://github.com/Abdelhady-22/CXR_image_classification)
+[![GitHub stars](https://img.shields.io/github/stars/Abdelhady-22/Football?style=social)](https://github.com/Abdelhady-22/Football)
+[![GitHub forks](https://img.shields.io/github/forks/Abdelhady-22/Football?style=social)](https://github.com/Abdelhady-22/Football)
+[![GitHub watchers](https://img.shields.io/github/watchers/Abdelhady-22/Football?style=social)](https://github.com/Abdelhady-22/Football)
 
 </div>
